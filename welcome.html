@@ -1,0 +1,702 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        欢迎界面
+    </title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/main.css" media="all">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" href="lib/bootstrap/js/bootstrap.min.js" media="all">
+</head>
+<body>
+<style type="text/css">
+    legend {
+        display: block;
+        width: 100px;
+        border-bottom: 0px;
+        font-family: "Microsoft YaHei", "Helvetica Neue";
+    }
+
+    legend a {
+        color: #666;
+    }
+
+    legend a:hover {
+        text-decoration: none;
+    }
+
+    .layui-table {
+        font-family: "Microsoft YaHei", "Helvetica Neue";
+    }
+</style>
+<div class="x-body" id="app">
+    <blockquote class="layui-elem-quote">
+        疫情数据分析系统！<span class="f-14">v1.0</span>
+    </blockquote>
+    <div class="row" >
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <section class="panel">
+                <div class="symbol bgcolor-blue">
+                    <!--                        <i class=" iconfont layui-icon"></i>-->
+                    <!--                    <i class="layui-icon" style="top: 3px;">&#xe613;</i>-->
+                    <i class="iconfont icon-yezhuxian"></i>
+                </div>
+                <div class="value tab-menu" bind="1">
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总栋数"><i
+                            class="iconfont " data-icon=""></i>
+                        <h1>{{totalCount}}</h1>
+                    </a>
+
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总栋数"> <i
+                            class="iconfont " data-icon=""></i><span>累计确诊</span></a>
+
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <section class="panel">
+                <div class="symbol bgcolor-commred">
+                    <!--                    <i class="iconfont icon-lvhuaxiaoqu"></i>-->
+                    <i class="layui-icon" style="top: 3px;">&#xe613;</i>
+                </div>
+
+                <div class="value tab-menu" bind="1">
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总户数"> <i
+                            class="iconfont " data-icon=""></i>
+                        <h1>{{xianquezheng}}</h1>
+                    </a>
+
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总户数"> <i
+                            class="iconfont " data-icon=""></i><span>现有确诊</span></a>
+
+                </div>
+            </section>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <section class="panel">
+                <div class="symbol bgcolor-dark-orange" style="background:orange ">
+                    <!--                    <i class="iconfont icon-yezhuxian"></i>-->
+                    <i class="layui-icon" style="top: 3px;">&#xe613;</i>
+                </div>
+                <div class="value tab-menu" bind="1">
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总人数"> <i
+                            class="iconfont " data-icon=""></i>
+                        <h1>{{zuorixingzheng}}</h1>
+                    </a>
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总人数"> <i
+                            class="iconfont " data-icon=""></i><span>昨日新增</span></a>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <section class="panel">
+                <div class="symbol bgcolor-dark-green"><i class="iconfont icon-yezhuxian"></i>
+                </div>
+                <div class="value tab-menu" bind="1">
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总人数"> <i
+                            class="iconfont " data-icon=""></i>
+                        <h1>{{yizhiyu}}</h1>
+                    </a>
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="总人数"> <i
+                            class="iconfont " data-icon=""></i><span>累计治愈</span></a>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <section class="panel">
+                <div class="symbol bgcolor-yellow-green"><i class="iconfont icon-yezhuxian"></i>
+                </div>
+                <div class="value tab-menu" bind="1">
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="租户数量"> <i
+                            class="iconfont " data-icon=""></i>
+                        <h1>{{yisiwang}}</h1>
+                    </a>
+                    <a href="javascript:;" data-url="user-info.html" data-parent="true" data-title="租户数量"> <i
+                            class="iconfont " data-icon=""></i><span>累计死亡</span></a>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+        <legend><a name="default">信息统计</a></legend>
+    </fieldset>
+
+    <!--相关统计-->
+    <div class="row" >
+        <div class="col-sm-6">
+            <section class="panel">
+                <div class="panel-heading">治疗中/已治愈/死亡</div>
+                <div class="panel-body">
+                    <div class="echarts" id="area" style="height:300px; height:350px"></div>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-6">
+            <section class="panel">
+                <div class="panel-heading">有症状/无症状</div>
+                <div class="panel-body">
+                    <div class="echarts" id="main" style="height:300px; height:350px"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-sm-12">
+            <div style="height:40px;line-height:40px;padding-left: 20px;display: inline-block;border-left: 5px solid rgb(129,207,231);margin-left: 20px">
+                感染者分布图
+            </div>
+            <div>
+                <div id="map" style="height:600px; height:650px"></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <section class="panel">
+                <div class="panel-heading">累计确诊</div>
+                <div class="panel-body">
+                    <ul class="list-group clear-list m-t">
+                        <li  class="list-group-item fist-item"><span class="float-right"> {{A}} </span> <span
+                                class="label label-success">1</span> {{a}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{B}} </span> <span
+                                class="label label-info">2</span> {{b}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{C}} </span> <span
+                                class="label label-primary">3</span> {{c}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{D}} </span> <span
+                                class="label label-warning">4</span> {{d}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{E}} </span> <span
+                                class="label label-warning">5</span> {{e}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{F}} </span> <span
+                                class="label label-warning">6</span> {{f}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{G}} </span> <span
+                                class="label label-warning">7</span> {{g}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{H}} </span> <span
+                                class="label label-warning">8</span> {{h}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{I}} </span> <span
+                                class="label label-warning">9</span> {{i}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{J}} </span> <span
+                                class="label label-warning">10</span> {{j}}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-6">
+            <section class="panel">
+                <div class="panel-heading">昨日新增</div>
+                <div class="panel-body">
+                    <ul class="list-group clear-list m-t">
+                        <li class="list-group-item fist-item"><span class="float-right"> {{K}} </span> <span
+                                class="label label-success">1</span> {{k}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{L}} </span> <span
+                                class="label label-info">2</span> {{l}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{M}} </span> <span
+                                class="label label-primary">3</span> {{m}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{N}} </span> <span
+                                class="label label-warning">4</span> {{n}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{O}} </span> <span
+                                class="label label-warning">5</span> {{o}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{P}} </span> <span
+                                class="label label-warning">6</span> {{p}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{Q}} </span> <span
+                                class="label label-warning">7</span> {{q}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{R}} </span> <span
+                                class="label label-warning">8</span> {{r}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{S}} </span> <span
+                                class="label label-warning">9</span> {{s}}
+                        </li>
+                        <li class="list-group-item"><span class="float-right"> {{T}} </span> <span
+                                class="label label-warning">10</span> {{t}}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+
+    </div>
+
+    <script src="lib/layui/layui.js" charset="utf-8"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('years'));
+
+
+        //var myChart = echarts.init(document.getElementById('chart2'));
+
+        var ydata = [{
+            name: 'A区车位',
+            value: 18
+        },
+            {
+                name: 'B区车位',
+                value: 16
+            },
+            {
+                name: 'C区车位',
+                value: 15
+            },
+            {
+                name: 'D区车位',
+                value: 14
+            },
+            {
+                name: 'E区车位',
+                value: 10
+            }
+        ];
+        var color = ["#8d7fec", "#5085f2", "#e75fc3", "#f87be2", "#f2719a", "#fca4bb", "#f59a8f", "#fdb301", "#57e7ec", "#cf9ef1"]
+        var xdata = ['A区车位', "B区车位", "C区车位", "D区车位", 'E区车位'];
+
+
+        option = {
+            /*backgroundColor: "rgba(255,255,255,1)",*/
+            color: color,
+            legend: {
+                orient: "vartical",
+                x: "left",
+                top: "center",
+                left: "53%",
+                bottom: "0%",
+                data: xdata,
+                itemWidth: 8,
+                itemHeight: 8,
+                textStyle: {
+                    color: '#000'
+                },
+                /*itemGap: 16,*/
+                /*formatter:function(name){
+                  var oa = option.series[0].data;
+                  var num = oa[0].value + oa[1].value + oa[2].value + oa[3].value+oa[4].value + oa[5].value + oa[6].value + oa[7].value+oa[8].value + oa[9].value ;
+                  for(var i = 0; i < option.series[0].data.length; i++){
+                      if(name==oa[i].name){
+                          return ' '+name + '    |    ' + oa[i].value + '    |    ' + (oa[i].value/num * 100).toFixed(2) + '%';
+                      }
+                  }
+                }*/
+
+                formatter: function (name) {
+                    return '' + name
+                }
+            },
+            series: [{
+                type: 'pie',
+                clockwise: false, //饼图的扇区是否是顺时针排布
+                minAngle: 2, //最小的扇区角度（0 ~ 360）
+                radius: ["20%", "60%"],
+                center: ["30%", "45%"],
+                avoidLabelOverlap: false,
+                itemStyle: { //图形样式
+                    normal: {
+                        borderColor: '#ffffff',
+                        borderWidth: 1,
+                    },
+                },
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center',
+                        formatter: '{b}\n{c} ({d}%)',
+                        rich: {
+                            text: {
+                                color: "#fff",
+                                fontSize: 14,
+                                align: 'center',
+                                verticalAlign: 'middle',
+                                padding: 8
+                            },
+                            value: {
+                                color: "#8693F3",
+                                fontSize: 24,
+                                align: 'center',
+                                verticalAlign: 'middle',
+                            },
+                        }
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 24,
+                        }
+                    }
+                },
+                data: ydata
+            }]
+        };
+        myChart.setOption(option);
+        myChart.currentIndex = -1;
+
+        setInterval(function () {
+            var dataLen = option.series[0].data.length;
+            // 取消之前高亮的图形
+            myChart.dispatchAction({
+                type: 'downplay',
+                seriesIndex: 0,
+                dataIndex: myChart.currentIndex
+            });
+            myChart.currentIndex = (myChart.currentIndex + 1) % dataLen;
+            // 高亮当前图形
+            myChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: myChart.currentIndex
+            });
+        }, 1000);
+
+        // 使用刚指定的配置项和数据显示图表。
+        /*myChart.setOption(option);*/
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
+</div>
+<div class="layui-footer footer footer-demo">
+    <div class="layui-main">
+        <p>
+            <a href="/">
+                Copyright ©2017 17sucai.com All Rights Reserved.
+            </a>
+        </p>
+
+    </div>
+</div>
+
+</body>
+<!--cdn 内容分发网络-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+<script>
+    new Vue({
+        // 定义 vue 实例作用范围
+        el: '#app',
+        // 数据
+        data:{
+            totalCount:1000,
+            yizhiyu:0,
+            yisiwang:0,
+            xianquezheng:0,
+            zuorixingzheng:10,
+            A:0,a:0,B:0,b:0,C:0,c:0,D:0,d:0,E:0,e:0,
+            F:0,f:0,G:0,g:0,H:0,h:0,I:0,i:0,J:0,j:0,
+            K:0,k:0,L:0,l:0,M:0,m:0,N:0,n:0,O:0,o:0,
+            P:0,p:0,Q:0,q:0,R:0,r:0,S:0,s:0,T:0,t:0,
+        },
+
+        // vue 的生命周期钩子函数，会在el挂载成功之后自动调用该部分内容，所以页面初始化的请求可以写在这里
+        mounted:function (){
+            // this 指的就是vue实例,可以通过this.totalCount 访问到data中的数据
+            // 但是在ajax请求中，this并不代表vue实例，所以需要在此处先声明that表示this
+            var that = this;
+            // 累计确诊  ajax  到后端
+            $.ajax({
+                // 请求url
+                url:'http://cloudfalls.cloud:8080/patient/count',
+                // 请求类型
+                type:'get',
+                // 参数传递
+                // data:{}
+                // 当请求成功后执行的函数  res  指后端响应的数据
+                success:function (res){
+                    console.log("累计确诊：",res.data);
+                    if (res.code == 200){
+                        // 将后端返回值赋值给vue 的 totalCount
+                        that.totalCount = res.data;
+                    }
+                }
+            }),
+                $.ajax({
+                    // 请求url
+                    url:'http://cloudfalls.cloud:8080/patient/getByState',
+                    // 请求类型
+                    type:'get',
+                    // 参数传递
+                    // data:{}
+                    // 当请求成功后执行的函数  res  指后端响应的数据
+                    success:function (res){
+                        console.log("累计确诊：",res.data);
+                        if (res.code == 200){
+                            // 将后端返回值赋值给vue 的 totalCount
+                            that.yizhiyu = res.data[0].value;
+                            that.yisiwang = res.data[1].value;
+                            that.xianquezheng = res.data[2].value;
+                        }
+                    }
+                }),
+
+                $.ajax({
+                    // 请求url
+                    url:'http://cloudfalls.cloud:8080/patient/ydCount',
+                    // 请求类型
+                    type:'get',
+                    // 参数传递
+                    // data:{}
+                    // 当请求成功后执行的函数  res  指后端响应的数据
+                    success:function (res){
+                        console.log("累计确诊：",res.data);
+                        if (res.code == 200){
+                            // 将后端返回值赋值给vue 的 totalCount
+                            that.zuorixingzheng = res.data;
+                        }
+                    }
+                }),
+
+                $.ajax({
+                    url: 'http://cloudfalls.cloud:8080/patient/getCountByMap',
+                    type: 'get',
+                    success: function (res) {
+                        console.log("各地区确诊：", res.data);
+                        if (res.code == 200) {
+                            // 将后端返回值赋值给vue 的 totalCount
+                            that.A = res.data[0].value;
+                            that.a = res.data[0].name;
+                            that.B = res.data[1].value;
+                            that.b = res.data[1].name;
+                            that.C = res.data[2].value;
+                            that.c = res.data[2].name;
+                            that.D = res.data[3].value;
+                            that.d = res.data[3].name;
+                            that.E = res.data[4].value;
+                            that.e = res.data[4].name;
+                            that.F = res.data[5].value;
+                            that.f = res.data[5].name;
+                            that.G = res.data[6].value;
+                            that.g = res.data[6].name;
+                            that.H = res.data[7].value;
+                            that.h = res.data[7].name;
+                            that.I = res.data[8].value;
+                            that.i = res.data[8].name;
+                            that.J = res.data[9].value;
+                            that.j = res.data[9].name;
+                        }
+                    }
+                })
+
+            $.ajax({
+                url: 'http://cloudfalls.cloud:8080/patient/getCountByZr',
+                type: 'get',
+                success: function (res) {
+                    console.log("昨日各地区确诊：", res.data);
+                    if (res.code == 200) {
+                        // 将后端返回值赋值给vue 的 totalCount
+                        that.K = res.data[0].value;
+                        that.k = res.data[0].name;
+                        that.L = res.data[1].value;
+                        that.l = res.data[1].name;
+                        that.M = res.data[2].value;
+                        that.m = res.data[2].name;
+                        that.N = res.data[3].value;
+                        that.n = res.data[3].name;
+                        that.O = res.data[4].value;
+                        that.o = res.data[4].name;
+                        that.P = res.data[5].value;
+                        that.p = res.data[5].name;
+                        that.Q = res.data[6].value;
+                        that.q = res.data[6].name;
+                        that.R = res.data[7].value;
+                        that.r = res.data[7].name;
+                        that.S = res.data[8].value;
+                        that.s = res.data[8].name;
+                        that.T = res.data[9].value;
+                        that.t = res.data[9].name;
+                    }
+                }
+            })
+
+
+        //    治疗中/已治愈/死亡 饼状图
+            $.ajax({
+                url: 'http://cloudfalls.cloud:8080/patient/getByState',
+                type: 'get',
+                success:function (res){
+                    console.log(res.data);
+                //    echarts
+                    // 第三步：基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('area'));
+                    // 配置图表项
+                    var option = {
+                        title: {
+                            text: '治疗中/已治愈/死亡占比',
+                            left: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left'
+                        },
+                        series: [
+                            {
+                                name: 'Access From',
+                                type: 'pie',
+                                radius: '50%',
+                                data: res.data,
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                }
+
+            }),
+
+            //    有/无症状折线图
+            $.ajax({
+                url: 'http://cloudfalls.cloud:8080/patient/getByLineChartShape',
+                type: 'get',
+                success:function (res){
+                    console.log(res.data);
+                    //    echarts
+                    // 第三步：基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+                    // 配置图表项
+                    var option2 = {
+                        title: {
+                            text: '有症状/无症状'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['有症状', '无症状']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['1月', '2月', '3月', '4月', '5月', '6月']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series:[
+                            {
+                                name:'有症状',
+                                type: 'line',
+                                //stack: 'Total', 堆叠
+                                data:[res.data[0].jan,res.data[0].feb,res.data[0].mar,res.data[0].api,res.data[0].may,res.data[0].jun]
+                            },
+                            {
+                                name:'无症状',
+                                type: 'line',
+                                //stack: 'Total',
+                                data: [res.data[1].jan,res.data[1].feb,res.data[1].mar,res.data[1].api,res.data[1].may,res.data[1].jun]
+                            }
+
+                        ]
+                    };
+                    myChart.setOption(option2);
+                }
+            }),
+
+            // 国家地图
+            $.ajax({
+                url: 'http://cloudfalls.cloud:8080/patient/getCountByMap',
+                type: 'get',
+                success:function (res){
+                    console.log(res.data);
+                    //    echarts
+                    // 第三步：基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('map'));
+                    myChart.showLoading();
+                    $.get('China.json', function (geoJson) {
+                        myChart.hideLoading();
+                        echarts.registerMap('ZG', geoJson);
+                    // 配置图表项
+                    var option3 = {
+                        title: {
+                            text: 'Distribution of infected persons of China （2020）',
+                            subtext: 'Data from Wikipedia',
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: ' {b}<br/> 累计确诊 {c} 例'
+                        },
+                        toolbox: {
+                            show: true,
+                            orient: 'vertical',
+                            left: 'right',
+                            top: 'center',
+                            feature: {
+                                dataView: { readOnly: false },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        visualMap: {
+                            min: 0,
+                            max: res.data[0].value,
+                            text: ['High', 'Low'],
+                            realtime: false,
+                            calculable: true,
+                            inRange: {
+                                color: ['lightskyblue', 'yellow', 'orangered']
+                            }
+                        },
+                        series: [
+                            {
+                                name: '新冠感染者分布图',
+                                type: 'map',
+                                map: 'ZG',
+                                label: {
+                                    show: true
+                                },
+                                data: res.data,
+                            }]
+                    }
+                    myChart.setOption(option3);
+                    })
+                }
+            })
+        }
+
+    })
+</script>
+</html>
